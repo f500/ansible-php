@@ -2,9 +2,11 @@
 
 - name: add php55 repository
   apt_repository: repo='deb http://mirror.nl.leaseweb.net/dotdeb/ wheezy-php55 all' state=present update_cache=no
+  when: ansible_distribution_release == "wheezy"
 
 - name: add php55 source repository
   apt_repository: repo='deb-src http://mirror.nl.leaseweb.net/dotdeb/ wheezy-php55 all' state=present update_cache=yes
+  when: ansible_distribution_release == "wheezy"
 
 - name: install php5-common
   apt: pkg=php5-common state=present
